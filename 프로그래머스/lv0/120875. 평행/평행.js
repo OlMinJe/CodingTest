@@ -1,7 +1,5 @@
 function solution(dots) {
-    const slopes = new Set();
     const isDots = dots => dots.every(([x, y]) => x >= 0 && x <= 100 && y >= 0 && y <= 100);
-    const isAxis = slope => slope === 0 && !isFinite(slope);
     const calculateSlope = (dot1, dot2) => (dot2[1] - dot1[1]) / (dot2[0] - dot1[0]);
     const combinations = [
         [dots[0], dots[1], dots[2], dots[3]],
@@ -16,6 +14,6 @@ function solution(dots) {
         const slope2 = calculateSlope(comb[2], comb[3]);
         if (slope1 === slope2) return 1;
     }
-
+    
     return 0;
 }
