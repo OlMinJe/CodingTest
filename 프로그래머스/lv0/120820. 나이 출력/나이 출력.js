@@ -1,3 +1,1 @@
-function solution(age) {
-    return new Date().getFullYear() - age;
-}
+const solution = age => new Date().getFullYear()-age;
