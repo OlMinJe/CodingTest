@@ -1,2 +1,5 @@
-const solution = (n, k) => n>=10 
-    ? (n*12000 + (k-=(n/10<<0)) * 2000) : n*12000+k*2000;
+const solution = (n, k) => {
+    k-=~~(n/10);
+    if (k < 0) k = 0;
+    return n*12000+k*2000;
+}
