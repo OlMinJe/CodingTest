@@ -10,7 +10,6 @@ rl.on('line', function (line) {
     input = line.split(' ');
 }).on('close', function () {
     const num = Number(input[0]);
-    let str = ''
     for(let i = 1 ; i <= num; i++) {
         console.log('*'.repeat(i));
     }
