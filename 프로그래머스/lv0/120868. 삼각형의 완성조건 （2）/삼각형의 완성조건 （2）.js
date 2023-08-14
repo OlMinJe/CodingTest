@@ -1,3 +1,1 @@
-function solution(sides) {
-    return Math.min(...sides) * 2 - 1;
-}
+const solution = sides => Math.min(...sides)*2-1;
