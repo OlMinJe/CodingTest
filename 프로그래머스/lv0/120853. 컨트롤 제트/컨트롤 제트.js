@@ -1,7 +1,1 @@
-function solution(s) {
-    let str = s.split(' ');
-     while(str.includes('Z')) {
-        str.splice(str.indexOf('Z')-1,2);
-    }
-    return str.reduce((a,b) => a+=Number(b), 0)
-}
+const solution = s => s.split(' ').map((e,i,arr) => e==='Z' ? arr[i-1]*-1 : Number(e)).reduce((a,b) => a+b,0);
