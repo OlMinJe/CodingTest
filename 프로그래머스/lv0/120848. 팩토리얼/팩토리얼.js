@@ -1,9 +1,6 @@
-function solution(n) {
+const solution =  n => {
+    let num = 1;
     let answer = 0;
-    let num = 1
-    for(let i = 1; num <= n; i++) {
-        num *= i;
-        answer++;
-    }
-    return answer-1;
+    while (num <= n) num *= ++answer;
+    return answer - 1;
 }
