@@ -1,12 +1,1 @@
-function solution(my_string) {
-    let answer = '';
-    let str = my_string.split("");
-    
-    const regex = /^(a|e|i|o|u)+$/;
-
-    str.forEach(str => {
-        if(!regex.test(str)) answer += str;
-    })
-    
-    return answer;
-}
+const solution = my_string => my_string.replace(/[aeiou]/g, '');
