@@ -1,9 +1,1 @@
-function solution(s) {
-    let answer = [];
-    for (let i of s) {
-        if (s.indexOf(i) === s.lastIndexOf(i)) {
-            answer.push(i);
-        }
-    }
-    return answer.sort().join('');
-}
+const solution = s => [...s].filter(e => s.indexOf(e)===s.lastIndexOf(e)).sort().join('');
