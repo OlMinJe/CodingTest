@@ -1,4 +1,1 @@
-function solution(numbers, direction) {
-    direction === "right" ? numbers.unshift(numbers.pop()) : numbers.push(numbers.shift());
-    return numbers;
-}
+const solution = (numbers, direction) => direction==='right' ? [numbers.pop()].concat(numbers) : numbers.concat(numbers.shift());
