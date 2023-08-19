@@ -1,3 +1,1 @@
-function solution(box, n) {
-    return parseInt(box[0]/n) * parseInt(box[1]/n) * parseInt(box[2]/n);
-}
+const solution = (box, n) => box.reduce((a,b) => a*Math.floor(b/n), 1);
