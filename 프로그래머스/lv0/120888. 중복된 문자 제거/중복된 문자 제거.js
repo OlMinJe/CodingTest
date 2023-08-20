@@ -1,3 +1,1 @@
-function solution(my_string) {
-    return [...new Set(my_string.split(''))].join('');
-}
+const solution = my_string => [...new Set(my_string.split(''))].join('');
