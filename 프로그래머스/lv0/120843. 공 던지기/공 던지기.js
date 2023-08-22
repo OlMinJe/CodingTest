@@ -1,3 +1,1 @@
-function solution(numbers, k) {
-    return numbers[(k - 1) * 2 % numbers.length];
-}
+const solution = (numbers, k) => numbers[(k-1)*2 % numbers.length];
