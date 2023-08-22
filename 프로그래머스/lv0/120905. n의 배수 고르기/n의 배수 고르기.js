@@ -1,3 +1,1 @@
-function solution(n, numlist) {
-    return numlist.filter(e => e%n === 0);
-}
+const solution = (n, numlist) => numlist.filter(e => e%n===0);
