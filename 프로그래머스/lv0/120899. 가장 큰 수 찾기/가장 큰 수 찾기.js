@@ -1,3 +1,1 @@
-function solution(array) {
-    return [Math.max(...array), array.indexOf(Math.max(...array))];
-}
+const solution = array => [Math.max(...array), array.indexOf(Math.max(...array))];
