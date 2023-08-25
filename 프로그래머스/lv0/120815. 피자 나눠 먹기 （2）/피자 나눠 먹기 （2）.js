@@ -1,7 +1,1 @@
-function solution(n) {
-    let answer = 6;
-    while(answer%n !== 0) {
-        answer+=6;
-    } 
-    return answer/6;
-}
+const solution = n => Array(6).fill(n).map((e,i) => e*=(i+1)).find(e => e%6===0)/6;
