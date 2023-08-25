@@ -1,11 +1,1 @@
-function solution(n) {
-    const answer = [];
-
-    for(let i = 1; i <= n; i++) {
-        if(i % 2 === 1) {
-            answer.push(i);
-        }
-    }
-    
-    return answer;
-}
+const solution = n => Array(n).fill(1).map((e,i) => e+i).filter(e => e%2!==0);
