@@ -1,9 +1,7 @@
 const solution = (players, callings) => {
     const playerMap = new Map();
 
-    players.forEach((player, index) => {
-        playerMap.set(player, index);
-    });
+    players.forEach((player, index) => playerMap.set(player, index));
 
     callings.forEach((e) => {
         const playerIndex = playerMap.get(e);
