@@ -1,34 +1,21 @@
-function solution(polynomial) {
-    const cut = polynomial.split(' + ');
-    let answer = '';
-    let xNum = 0;
-    let xNumbers = 0;
-    let sum = 0;
-    let total = 0;
-    let totalNum = '';
+const solution = polynomial => {
+    // 다행식 자르기
+    const arr = polynomial.split(' + ');
+    // x의 계수 구하기(-1과 1을 처리한다.)
+    const xNum = arr
+        .filter(e => e.includes('x'))
+        .map(x => x.includes('-') ? parseInt(x)||-1 : parseInt(x)||1 ); 
+        // parseInt와 Number의 처리 차이점?
+    // 상수 값만 추출하기
+    const num = arr.filter(e => !e.includes('x')).map(Number);
 
-    cut.map(e => e[0].includes('x') ? xNum += 1 : (e[0].includes('-') ? xNum -= 1 : 0));
-    cut.map(e => {
-        if (e.includes('x')) {
-            const coefficient = Number(e.split('x')[0].replace('+', '').replace('-', ''));
-            xNumbers += coefficient;
-         }
-    });
+    // 계수의 합과 상수의 합계 구하기
+    const xNumSum = xNum.reduce((a,c) => a+c, 0);
+    const numSum = num.reduce((a,c) => a+c, 0);
 
-    if (xNum === null) xNum = 0;
-    if (xNumbers === null) xNumbers = 0;
-
-    total = xNum + xNumbers;
-    for (let i = 0; i < cut.length; i++) {
-        totalNum = total === -1 ? '-' : (total === 1 ? '' : total.toString());
-
-        if (cut[i].indexOf('x') === -1) sum += Number(cut[i]);
-        if (i === cut.length - 1) {
-            answer = cut.findIndex(e => e.includes('x')) === -1
-            ? sum.toString()
-            : (sum !== 0 ? totalNum + 'x + ' + sum.toString() : totalNum + 'x');
-        }
-    }
-
-    return answer;
+    
+    return [
+        `${xNumSum===-1 ? '-x' : xNumSum===1 ? 'x' : xNumSum===0? '' : xNumSum+'x'}`,
+        `${numSum===0 ? '' : numSum}`
+    ].join(xNumSum&&numSum ? ' + ' : '');
 }
