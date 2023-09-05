@@ -1,11 +1,11 @@
-function solution(id_pw, db) {
-    const id = id_pw[0];
-    const pw = id_pw[1];
+const solution = (id_pw, db) => {
+    const [id, pw] = id_pw;
+    const isIdExists = db.some(e => e.includes(id));
+    const isPwCorrect = db.some(e => e.includes(id)&&e.includes(pw));
+
+    if (!isIdExists) return 'fail';
     
-    const idItem = db.filter((i)=> i[0] === id);
-    
-    if(idItem.length===0) return 'fail';
-    
-    if(idItem[0][1] === pw) return "login";
-    else return "wrong pw";
+    if (isIdExists && isPwCorrect) return 'login';
+    return 'wrong pw';
 }
+
