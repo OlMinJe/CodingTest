@@ -1,3 +1,1 @@
-function solution(n, t) {
-    return Math.pow(2, t)*n;
-}
+const solution = (n, t) => Math.pow(2,t)*n;
