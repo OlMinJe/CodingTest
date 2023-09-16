@@ -1,15 +1,11 @@
-function solution(n) {
+const solution = n => {
     let answer = [];
-    let idx = 2;
-    let num = n
     
-    while(idx <= num) {
-        if(num % idx === 0) {
-            answer.push(idx);
-            num /= idx;    
-            idx = 1;
+    for(i=2; i<=n; i++) {
+        while (n%i === 0) {
+            n /= i;
+            answer.push(i);
         }
-        idx++;
     }
     return [...new Set(answer)];
 }
