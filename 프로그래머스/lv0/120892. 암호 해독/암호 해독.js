@@ -1,10 +1,1 @@
-function solution(cipher, code) {
-    let answer = ""
-    cipher.split("").map((e, idx) => {
-        if((idx+1) % code == 0) {
-            answer += e;
-        }
-    });
-    return answer;
-
-}
+const solution = (cipher, code) => cipher.split("").filter((_, idx) => (idx+1)%code === 0).join("");
