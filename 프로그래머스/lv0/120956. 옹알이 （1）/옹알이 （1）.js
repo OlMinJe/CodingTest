@@ -1,4 +1,4 @@
-function solution(babbling) {
+const solution = babbling => {
     let cnt = 0;
     const regex = /^(aya|ye|woo|ma)+$/;
 
