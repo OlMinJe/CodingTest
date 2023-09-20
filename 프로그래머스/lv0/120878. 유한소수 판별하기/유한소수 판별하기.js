@@ -1,3 +1,5 @@
-function solution(a, b) {
-    return (a/b).toString().length > 11 ? 2 : 1;
-}
+const solution = (a, b) => {
+    while (b%2 === 0) b/=2;
+    while (b%5 === 0) b/=5;
+    return b===1 ? 1 : (a%b === 0 ? 1 : 2);
+};
