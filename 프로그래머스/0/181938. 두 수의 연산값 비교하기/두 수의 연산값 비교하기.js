@@ -1,1 +1,1 @@
-const solution = (a, b) => Math.max(Number(a.toString() + b.toString()), 2 * a * b);
+const solution = (a, b) => Math.max(Number('' + a + b), 2 * a * b);
