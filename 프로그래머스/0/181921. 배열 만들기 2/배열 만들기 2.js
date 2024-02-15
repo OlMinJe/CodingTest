@@ -27,10 +27,5 @@ const solution = (l, r) => {
             arr.push(val);
         }
     }
-    
-    let i = 3;
-    console.log(typeof i.toString(2))
-    console.log(Number(i.toString(2)))
-
     return arr.length > 0 ? arr : [-1];
 }
