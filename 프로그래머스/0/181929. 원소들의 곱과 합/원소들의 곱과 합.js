@@ -1,7 +1,10 @@
-const solution = (num_list) =>
-  Math.pow(
-    num_list.reduce((acc, cur) => acc + cur),
-    2
-  ) >= num_list.reduce((acc, cur) => acc * cur, 1)
-    ? 1
-    : 0;
+const solution = (num_list) => {
+    let [product, sum] = [1, 0];
+    
+    for (const n of num_list) {
+        product *= n;
+        sum += n;
+    }
+    
+    return product < sum ** 2 ? 1 : 0
+}
