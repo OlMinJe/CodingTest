@@ -1,6 +1,5 @@
 const solution = (arr, intervals) => {
-  const [firstStart, firstEnd] = intervals[0];
-  const [secondStart, secondEnd] = intervals[1];
+  const [[s1, e1], [s2, e2]] = intervals;
 
-  return arr.slice(firstStart, firstEnd + 1).concat(arr.slice(secondStart, secondEnd + 1));
+  return arr.slice(s1, e1 + 1).concat(arr.slice(s2, e2 + 1));
 };
