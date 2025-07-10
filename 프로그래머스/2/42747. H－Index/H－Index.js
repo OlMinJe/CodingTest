@@ -1,9 +1,6 @@
 function solution(citations) {
   citations.sort((a, b) => b - a);
 
-  for (let i = 0; i < citations.length; i++) {
-    if (citations[i] < i + 1) return i;
-  }
-
-  return citations.length;
+  const idx = citations.findIndex((item, i) => item < i + 1);
+  return idx === -1 ? citations.length : idx;
 }
