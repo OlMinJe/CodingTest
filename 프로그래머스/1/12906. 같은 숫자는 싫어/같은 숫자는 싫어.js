@@ -1,0 +1,1 @@
+const solution = (arr) => arr.filter((num, idx) => num !== arr[idx - 1]);
