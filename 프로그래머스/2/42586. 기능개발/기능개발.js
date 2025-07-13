@@ -4,7 +4,7 @@ function solution(progresses, speeds) {
     
     for (let i = 0; i < progresses.length; i++) {
         const remain = 100 - progresses[i];
-        const day = ~~((remain + speeds[i] - 1) / speeds[i]);
+        const day = Math.ceil(remain / speeds[i]);
         
         if (day <= currentDay) {
           count++;
