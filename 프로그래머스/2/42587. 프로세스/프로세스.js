@@ -4,7 +4,7 @@ function solution(priorities, location) {
 
   while (queue.length) {
     const current = queue.shift();
-    const maxPriority = Math.max(...queue.map(item => item.priority));
+    const maxPriority = Math.max(...queue.map((item) => item.priority));
 
     if (current.priority < maxPriority) {
       queue.push(current);
