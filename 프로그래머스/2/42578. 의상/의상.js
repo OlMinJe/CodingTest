@@ -1,7 +1,7 @@
 function solution(clothes) {
     const clothesMap = new Map();
 
-    for (const [name, type] of clothes) {
+    for (const [_, type] of clothes) {
         clothesMap.set(type, (clothesMap.get(type) || 0) + 1);
     }
 
