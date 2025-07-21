@@ -8,7 +8,7 @@ function solution(numbers) {
       return;
     }
 
-    arr.forEach((fixed, idx) => {
+    arr.forEach((_, idx) => {
       const next = [...arr];
       next.splice(idx, 1);
       getPermutations(next, len, current + arr[idx]);
