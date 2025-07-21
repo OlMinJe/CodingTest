@@ -1,17 +1,14 @@
 function solution(brown, yellow) {
   const total = brown + yellow;
 
-  for (let i = 1; i <= total; i++) {
-    const width = total / i;
+  for (let height = 3; height <= Math.sqrt(total); height++) {
+    if (total % height !== 0) continue;
+    const width = total / height;
 
-    if (!Number.isInteger(width)) continue;
-    if (width < i) continue;
+    if (width < height) continue;
 
-    const innerWidth = width - 2;
-    const innerHeight = i - 2;
-
-    if (innerWidth * innerHeight === yellow) {
-      return [width, i];
-    }
+    const yellowWidth = width - 2;
+    const yellowHeight = height - 2;
+    if (yellowWidth * yellowHeight === yellow) return [Number(width), height];
   }
 }
