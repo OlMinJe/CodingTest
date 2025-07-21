@@ -1,34 +1,35 @@
 function solution(numbers) {
-  const numPieces = numbers.split('');
+  let answer = 0;
   const numberSet = new Set();
 
-  const getPermutations = (arr, len, current = '') => {
-    if (current.length === len) {
-      numberSet.add(Number(current));
-      return;
+  const getPermutations = (arr, prefix = '') => {
+    if (prefix.length > 0) {
+      numberSet.add(Number(prefix));
     }
 
-    arr.forEach((_, idx) => {
+    for (let i = 0; i < arr.length; i++) {
       const next = [...arr];
-      next.splice(idx, 1);
-      getPermutations(next, len, current + arr[idx]);
-    });
+      next.splice(i, 1);
+
+      getPermutations(next, prefix + arr[i]);
+    }
   };
 
-  for (let i = 1; i <= numPieces.length; i++) {
-    getPermutations(numPieces, i);
+  getPermutations(numbers.split(''));
+
+  for (const num of numberSet) {
+    if (isPrime(num)) answer++;
   }
 
-  const isPrime = (n) => {
-    if (n === 2) return true;
-    if (n < 2 || n % 2 === 0) return false;
+  return answer;
+}
 
-    const sqrt = Math.sqrt(n);
-    for (let i = 3; i <= sqrt; i += 2) {
-      if (n % i === 0) return false;
-    }
-    return true;
-  };
+const isPrime = (n) => {
+  if(n < 2) return false;
 
-  return [...numberSet].filter(isPrime).length;
+  for(let i = 2 ; i <= Math.floor(Math.sqrt(n)); i++) {
+    if(n%i === 0) return false;
+  }
+
+  return true;
 }
