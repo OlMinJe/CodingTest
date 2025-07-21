@@ -1,35 +1,36 @@
-function solution(numbers) {
-  let answer = 0;
-  const numberSet = new Set();
+function getPermutations(arr, r) {
+  if (r === 1) return arr.map((v) => [v]);
+  const result = [];
+    
+  arr.forEach((fixed, idx) => {
+    const rest = [...arr.slice(0, idx), ...arr.slice(idx + 1)];
+    const perms = getPermutations(rest, r - 1);
+    const attached = perms.map((p) => [fixed, ...p]);
+    result.push(...attached);
+  });
 
-  const getPermutations = (arr, prefix = '') => {
-    if (prefix.length > 0) {
-      numberSet.add(Number(prefix));
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      const next = [...arr];
-      next.splice(i, 1);
-
-      getPermutations(next, prefix + arr[i]);
-    }
-  };
-
-  getPermutations(numbers.split(''));
-
-  for (const num of numberSet) {
-    if (isPrime(num)) answer++;
-  }
-
-  return answer;
+  return result;
 }
 
-const isPrime = (n) => {
-  if(n < 2) return false;
+function solution(numbers) {
+  const numPieces = numbers.split('');
+  const numberSet = new Set();
 
-  for(let i = 2 ; i <= Math.floor(Math.sqrt(n)); i++) {
-    if(n%i === 0) return false;
+  for (let i = 1; i <= numPieces.length; i++) {
+    const perms = getPermutations(numPieces, i);
+    perms.forEach((perm) => numberSet.add(Number(perm.join(''))));
   }
 
-  return true;
+  const isPrime = (n) => {
+    if (n === 2) return true;
+    if (n < 2 || n % 2 === 0) return false;
+
+    const sqrt = Math.sqrt(n);
+    for (let i = 3; i <= sqrt; i += 2) {
+      if (n % i === 0) return false;
+    }
+    return true;
+  };
+
+  return [...numberSet].filter(isPrime).length;
 }
