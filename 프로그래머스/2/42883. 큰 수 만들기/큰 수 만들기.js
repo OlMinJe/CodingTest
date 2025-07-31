@@ -1,13 +1,18 @@
 function solution(number, k) {
-  const stack = [];
+  const result = [];
 
-  for (let digit of number) {
-    while (k > 0 && stack.length > 0 && stack[stack.length - 1] < digit) {
-      stack.pop();
+  for (const current of number) {
+    while (k > 0 && result.length > 0 && result[result.length - 1] < current) {
+      result.pop();
       k--;
     }
-    stack.push(digit);
+    result.push(current);
   }
 
-  return stack.slice(0, stack.length - k).join('');
+  while (k > 0) {
+    result.pop();
+    k--;
+  }
+
+  return result.join('');
 }
