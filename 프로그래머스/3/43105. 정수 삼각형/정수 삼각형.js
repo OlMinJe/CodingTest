@@ -1,10 +1,8 @@
-const mergeFn = (row, dp) => row.map((v, i) => v + Math.max(dp[i], dp[i + 1]));
-
 function solution(triangle) {
-  if (triangle.length === 0) return 0;
-
-  const bottom = triangle[triangle.length - 1];
-
-  const answer = triangle.slice(0, -1).reduceRight((dp, row) => mergeFn(row, dp), bottom);
-  return answer[0];
+  for(let i = triangle.length -2 ; i >= 0; i--) {
+    for(let j = 0 ; j < triangle[i].length; j++) {
+      triangle[i][j] += Math.max(triangle[i+1][j],triangle[i+1][j+1]);
+    }
+  }
+  return triangle[0][0];
 }
